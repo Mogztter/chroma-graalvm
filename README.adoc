@@ -1,0 +1,35 @@
+= Chroma.js on the JVM using GraalVM!
+:uri-chromajs: https://github.com/gka/chroma.js/
+
+ifdef::env-github[]
+image:https://img.shields.io/travis/yuzutech/chroma-graalvm/master.svg[Travis build status, link=https://travis-ci.org/yuzutech/chroma-graalvm]
+endif::[]
+
+This project demonstrate how {uri-chromajs}[Chroma.js] can be embed in a Java application using the GraalVM Polyglot API.
+
+[caption=Status]
+CAUTION: This project is a _proof of concept_.
+
+== Build
+
+. Install https://www.graalvm.org/docs/getting-started/#install-graalvm[GraalVM]
+. Install Maven 3.5 or greater
+. Run the following command:
+
+ $ mvn clean install
+
+
+[IMPORTANT]
+====
+Make sure that Maven is using the `java` binary provided by GraalVM.
+You can specify the `JAVA_HOME` environment variable before the `mvn` command:
+
+ $ JAVA_HOME=/path/to/graalvm mvn clean install
+====
+
+== Usage
+
+```java
+Chroma.create("pink").darken().saturate(2).hex(); // "#ff6d93"
+Chroma.create("orange").rgba(); // [255, 165, 0, 1]
+```
